@@ -5,14 +5,20 @@ dotenv.config();
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import helmet from 'helmet';
+import connectDB from './config/connectDB.js';
 
+
+
+//App Config
 const app = express();
-
 app.use(cors({
     credentials: true,
     origin: process.env.FRONTEND_URL
 }))
+const PORT = process.env.PORT || 8080;
 
+
+//Middlewares
 app.use(express.json());
 app.use(cookieParser());
 // app.use(morgan('dev'));
@@ -21,9 +27,9 @@ app.use(helmet({
     crossOriginResourcePolicy: false
 }));
 
-const PORT = process.env.PORT || 8080;
 
 
+//API Endpoints
 app.get('/', (req, res) => {
     res.json({
         message: "Server is running"
@@ -36,7 +42,11 @@ app.get('/health', (req, res) => {
     })
 });
 
-app.listen(PORT, () => {
+
+connectDB().then(()=>{
+    app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+  });
 });
+
 
