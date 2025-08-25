@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import sendEmail from "../config/sendEmail.js";
 import emailVerificationTemplate  from "../utils/emailVerificationTemplate.js";
 
-return async function registerUserController(req,res){
+export async function registerUserController(req,res){
     try{
         const{name,email,password} = req.body;
 
@@ -58,7 +58,7 @@ return async function registerUserController(req,res){
          })
 
     }catch(error){
-        return status(500).json({
+        return res.status(500).json({
             message: error.message || error,
             error: true,
             success: false
