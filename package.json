@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js" 
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "mongoose": "^8.18.0",
     "morgan": "^1.10.1",
     "nodemon": "^3.1.10",
-    "npm": "^11.5.2"
+    "npm": "^11.5.2",
+    "resend": "^6.0.1"
   }
 }
